@@ -1,6 +1,9 @@
 require("@matterlabs/hardhat-zksync-solc");
 
 /** @type import('hardhat/config').HardhatUserConfig */
+
+const RPC_URL_TEST = "https://rpc.fusespark.io/";
+const RPC_URL = "https://rpc.fusespark.io/";
 module.exports = {
   zksolc: {
     version: "1.3.9",
@@ -11,18 +14,26 @@ module.exports = {
       },
     },
   },
+  defaultNetwork: "lisk-sepolia",
   networks: {
-    zksync_testnet: {
-      url: "https://zksync2-testnet.zksync.dev",
-      ethNetwork: "goerli",
-      chainId: 280,
-      zksync: true,
+    fuse: {
+      url: RPC_URL,
+      accounts: [
+        "0xb79ccd1b062531869010ac01ed261c26e67f6ef623072818b57c0f25cfe63ffa",
+      ],
     },
-    zksync_mainnet: {
-      url: "https://zksync2-mainnet.zksync.io/",
-      ethNetwork: "mainnet",
-      chainId: 324,
-      zksync: true,
+    fuseSparknet: {
+      url: RPC_URL_TEST,
+      accounts: [
+        "0xf60f6718573e07f07c581e34922294749fd2f32ac9b45018af8414031a951856",
+      ],
+    },
+    "lisk-sepolia": {
+      url: "https://rpc.sepolia-api.lisk.com",
+      accounts: [
+        "0xf60f6718573e07f07c581e34922294749fd2f32ac9b45018af8414031a951856",
+      ],
+      gasPrice: 1000000000,
     },
   },
   paths: {
